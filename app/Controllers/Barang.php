@@ -14,7 +14,6 @@ class Barang extends BaseController
     }
     public function index()
     {
-
         $data = ['title' => "Tabel Data Barang", 'barang' => $this->barangModel->getBarang()];
         return view('barang/index', $data);
     }
