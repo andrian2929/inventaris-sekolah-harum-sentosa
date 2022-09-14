@@ -43,6 +43,9 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
+                <li class="nav-item d-none d-sm-inline-block text-center">
+                    <h4 class="mt-2 text-center"><?= $title ?></h4>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -165,12 +168,7 @@
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-12 text-center">
-                            <h1 class="m-0"><?= $title ?></h1>
-                        </div>
 
-                    </div>
                 </div>
             </div>
 

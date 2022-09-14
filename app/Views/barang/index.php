@@ -8,6 +8,20 @@
         <a href="/barang/tambah" class="btn btn-info mb-3"><i class="fa-solid fa-copy"></i> Bulk Input</a>
         <div class="card">
             <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-md-8">
+                        <form action="simple-results.html">
+                            <div class="input-group">
+                                <input type="search" class="form-control" placeholder="Type your keywords here">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
