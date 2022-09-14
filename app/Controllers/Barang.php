@@ -39,4 +39,20 @@ class Barang extends BaseController
         $data = ['title' => "Tabel Data Barang", 'barang' => $this->barangModel->getBarang()];
         return view('barang/index', $data);
     }
+
+    public function prosestambah()
+    {
+        $rules = [
+            'nama_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harus diisi'
+                ]
+            ]
+        ];
+
+        if (!$this->validate($rules)) {
+            dd($this->validator->getError('nama_barang'));
+        }
+    }
 }

@@ -39,6 +39,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/barang', 'Barang::index');
 $routes->get('/barang/tambah', 'Barang::tambah');
 $routes->get('/barang/detail/(:segment)', 'Barang::detail/$1');
+$routes->post('/barang/prosestambah', 'Barang::prosestambah');
 
 /*
  * --------------------------------------------------------------------
