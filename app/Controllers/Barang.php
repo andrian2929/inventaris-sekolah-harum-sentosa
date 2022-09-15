@@ -20,7 +20,8 @@ class Barang extends BaseController
 
     public function tambah()
     {
-        $data = ['title' => "Tambah Barang"];
+        session();
+        $data = ['title' => "Tambah Barang", 'validation' => \Config\Services::validation()];
         return view('barang/tambah', $data);
     }
 
@@ -46,13 +47,85 @@ class Barang extends BaseController
             'nama_barang' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Harus diisi'
+                    'required' => 'Nama harus diisi'
+                ]
+            ],
+            'merek_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Merek harus diisi'
+                ]
+            ],
+            'harga_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga barang harus diisi',
+                    'numeric' => 'Harga harus berupa angka'
+                ]
+            ],
+            'kategori_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori harus diisi',
+
+                ]
+            ],
+            'kondisi_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kondisi barang harus diisi',
+
+                ]
+            ],
+            'unit_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Unit barang harus diisi',
+
+                ]
+            ],
+            'lokasi_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Lokasi barang harus diisi',
+
+                ]
+            ],
+            'tanggal_pembukuan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal pembukuan harus diisi',
+
+                ]
+            ],
+            'asal_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Asal barang harus diisi',
+
                 ]
             ]
         ];
 
         if (!$this->validate($rules)) {
-            dd($this->validator->getError('nama_barang'));
+            return redirect()->to('/barang/tambah')->withInput();
+        } else {
+
+
+            $this->barangModel->save([
+                'nama_barang' => $this->request->getVar('nama_barang'),
+                'kategori_barang' => $this->request->getVar('kategori_barang'),
+                'asal_barang' => $this->request->getVar('asal_barang'),
+                'lokasi_barang' => $this->request->getVar('lokasi_barang'),
+                'unit_barang' => $this->request->getVar('unit_barang'),
+                'kondisi_barang' => $this->request->getVar('kondisi_barang'),
+                'merek_barang' => $this->request->getVar('merek_barang'),
+                'harga_barang' => $this->request->getVar('harga_barang'),
+                'foto_barang' => 'default.jpg',
+                'keterangan_barang' => $this->request->getVar('keterangan_barang'),
+                'tanggal_pembukuan' => $this->request->getVar('tanggal_pembukuan'),
+
+            ]);
         }
     }
 }

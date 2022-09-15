@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/adminlte/plugins/summernote/summernote-bs4.min.css">
+
+    <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -212,6 +215,8 @@
     </script>
     <!-- Bootstrap 4 -->
     <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+
     <!-- ChartJS -->
     <script src="/adminlte/plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
@@ -232,6 +237,16 @@
     <script src="/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/adminlte/dist/js/adminlte.js"></script>
+
+    <script>
+        $('#reservationdate').datetimepicker({
+            format: 'Y-MM-DD'
+        })
+
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    </script>
 
 
 </body>
