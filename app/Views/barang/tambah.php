@@ -4,56 +4,81 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-
             <form action="/barang/prosestambah" method="post">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>
-                        <input type="text" class="form-control" id="nama_barang" placeholder="Masukkan nama barang" autofocus name="merek_barang">
+                        <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : '' ?>" id="nama_barang" placeholder="Masukkan nama barang" autofocus name="nama_barang" value="<?= old('nama_barang') ?>">
+                        <span class="error invalid-feedback"> <?= $validation->getError('nama_barang') ?></span>
                     </div>
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="merek_barang">Merek</label>
-                            <input type="text" class="form-control" id="merek_barang" placeholder="Masukkan merek barang" name="merek_barang">
+                            <input type="text" class="form-control <?= ($validation->hasError('merek_barang')) ? 'is-invalid' : '' ?>" id="merek_barang" placeholder="Masukkan merek barang" name="merek_barang" value="<?= old('merek_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('merek_barang') ?></span>
                         </div>
 
                         <div class="col-6">
                             <label for="harga_barang">Harga</label>
-                            <input type="number" class="form-control" id="harga_barang" placeholder="Masukkan harga barang" name="harga_barang">
+                            <input type="number" class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : '' ?>" id="harga_barang" placeholder="Masukkan harga barang" name="harga_barang" value="<?= old('harga_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('harga_barang') ?></span>
                         </div>
                     </div>
 
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="kategori_barang">Kategori</label>
-                            <input type="text" class="form-control" id="kategori_barang" placeholder="Masukkan kategori barang" name="kategori_barang">
+                            <input type="text" class="form-control <?= ($validation->hasError('kategori_barang')) ? 'is-invalid' : '' ?>" id="kategori_barang" placeholder="Masukkan kategori barang" name="kategori_barang" value="<?= old('kategori_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('kategori_barang') ?></span>
                         </div>
                         <div class="col-6">
-                            <label for="kondisi_barang">Kondisi</label>
-                            <input type="text" class="form-control" id="kondisi_barang" placeholder="Masukkan kondisi barang" name="kondisi_barang">
+                            <label>Kondisi</label>
+                            <select class="form-control select2bs4 <?= ($validation->hasError('kondisi_barang')) ? 'is-invalid' : '' ?>" style="width: 100%;">
+                                <option selected="selected">Baik</option>
+                                <option>Rusak</option>
+                                <option>California</option>
+                                <option>Delaware</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Washington</option>
+                            </select>
+                            <span class="error invalid-feedback"> <?= $validation->getError('kondisi_barang') ?></span>
                         </div>
                     </div>
 
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="asal_barang">Asal</label>
-                            <input type="text" class="form-control" id="asal_barang" placeholder="Masukkan asal barang" name="asal_barang">
+                            <input type="text" class="form-control <?= ($validation->hasError('asal_barang')) ? 'is-invalid' : '' ?>" id="asal_barang" placeholder="Masukkan asal barang" name="asal_barang" value="<?= old('asal_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('asal_barang') ?></span>
                         </div>
 
                         <div class="col-6">
-                            <label for="tanggal_pembukuan">Tanggal Pembukuan</label>
-                            <input type="text" class="form-control" id="tanggal_pembukuan" placeholder="Masukkan tanggal pembukuan" name="tanggal_pembukuan">
+                            <label>Tanggal Pembukuan</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('tanggal_pembukuan')) ? 'is-invalid' : '' ?>" data-target="#reservationdate" name="tanggal_pembukuan" value="<?= old('tanggal_pembukuan') ?>" placeholder="Masukkan tanggal pembukuan">
+                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <span style="font-size: 80%; display:   <?= ($validation->hasError('tanggal_pembukuan')) ? '' : 'none' ?>" class="text-danger"><?= $validation->getError('tanggal_pembukuan') ?></span>
+
+
+
+
                         </div>
                     </div>
 
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="unit_barang">Unit</label>
-                            <input type="text" class="form-control" id="unit_barang" placeholder="Masukkan asal unit" name="unit_barang">
+                            <input type="text" class="form-control <?= ($validation->hasError('unit_barang')) ? 'is-invalid' : '' ?>" id="unit_barang" placeholder="Masukkan asal unit" name="unit_barang" value="<?= old('unit_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('unit_barang') ?></span>
                         </div>
                         <div class="col-6">
                             <label for="lokasi_barang">Lokasi</label>
-                            <input type="text" class="form-control" id="lokasi_barang" placeholder="Masukkan lokasi barang" name="lokasi_barang">
+                            <input type="text" class="form-control <?= ($validation->hasError('lokasi_barang')) ? 'is-invalid' : '' ?>" id="lokasi_barang" placeholder="Masukkan lokasi barang" name="lokasi_barang" value="<?= old('lokasi_barang') ?>">
+                            <span class="error invalid-feedback"> <?= $validation->getError('lokasi_barang') ?></span>
                         </div>
                     </div>
 
@@ -89,7 +114,9 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <label for="keterangan_barang">Keterangan</label>
-                            <textarea class="form-control" id="keterangan_barang" rows="3" name="keterangan_barang"></textarea>
+                            <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang">
+                           <?= old('keterangan_barang') ?></textarea>
+                            <span class="error invalid-feedback"> <?= $validation->getError('keterangan_barang') ?></span>
                         </div>
                     </div>
 
