@@ -4,6 +4,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
+            <?= $validation->listErrors(); ?>
             <form action="/barang/prosestambah" method="post">
                 <div class="card-body">
                     <div class="form-group">
@@ -28,19 +29,21 @@
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="kategori_barang">Kategori</label>
-                            <input type="text" class="form-control <?= ($validation->hasError('kategori_barang')) ? 'is-invalid' : '' ?>" id="kategori_barang" placeholder="Masukkan kategori barang" name="kategori_barang" value="<?= old('kategori_barang') ?>">
-                            <span class="error invalid-feedback"> <?= $validation->getError('kategori_barang') ?></span>
+                            <select name="kategori_barang" id="" class="form-control select2bs4">
+                                <?php $kategori = ['Kendaraan', 'Elektronik'] ?>
+                                <?php foreach ($kategori as $ktg) : ?>
+                                    <option value="<?= $ktg ?>"><?= $ktg ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class="error invalid-feedback"> <?= $validation->getError('merek_barang') ?></span>
                         </div>
                         <div class="col-6">
                             <label>Kondisi</label>
-                            <select class="form-control select2bs4 <?= ($validation->hasError('kondisi_barang')) ? 'is-invalid' : '' ?>" style="width: 100%;">
+                            <select name="kondisi_barang" class="form-control <?= ($validation->hasError('kondisi_barang')) ? 'is-invalid' : '' ?>" style="width: 100%;">
                                 <option selected="selected">Baik</option>
+                                <option>Setengah Rusak</option>
                                 <option>Rusak</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
+
                             </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('kondisi_barang') ?></span>
                         </div>
@@ -72,51 +75,29 @@
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="unit_barang">Unit</label>
-                            <input type="text" class="form-control <?= ($validation->hasError('unit_barang')) ? 'is-invalid' : '' ?>" id="unit_barang" placeholder="Masukkan asal unit" name="unit_barang" value="<?= old('unit_barang') ?>">
-                            <span class="error invalid-feedback"> <?= $validation->getError('unit_barang') ?></span>
+                            <select name="unit_barang" id="" class="form-control select2bs4">
+                                <?php foreach ($unit as $unt) : ?>
+                                    <option value="<?= $unt['nama_unit'] ?>"><?= $unt['nama_unit'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class="error invalid-feedback"> <?= $validation->getError('lokasi_barang') ?></span>
                         </div>
                         <div class="col-6">
                             <label for="lokasi_barang">Lokasi</label>
-                            <input type="text" class="form-control <?= ($validation->hasError('lokasi_barang')) ? 'is-invalid' : '' ?>" id="lokasi_barang" placeholder="Masukkan lokasi barang" name="lokasi_barang" value="<?= old('lokasi_barang') ?>">
+                            <select name="lokasi_barang" id="" class="form-control select2bs4">
+                                <?php foreach ($lokasi as $lok) : ?>
+                                    <option value="<?= $lok['nama_lokasi'] ?>"><?= $lok['nama_lokasi'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('lokasi_barang') ?></span>
                         </div>
                     </div>
 
                     <div class="form-row mb-2">
                         <div class="col-sm-12 col-md-6">
-                            <label for="gambarBarang">Gambar</label>
-                            <div class="row">
-                                <div class="col">
-
-                                    <div>
-                                        <img src="/img/barang/realmebook.jpeg" class="img-thumbnail rounded" alt="">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="gambarBarang" name="gambar_barang">
-                                            <label class="custom-file-label" for="gambarBarang">Pilih gambar</label>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="callout callout-info mt-3">
-                                        <ul>
-                                            <li>Gambar harus berformat png, jpeg, jpg</li>
-                                            <li>Ukuran gambar harus di bawah 1 MB</li>
-                                            <li>Tidak diwajibkan untuk mengunggah gambar</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
                             <label for="keterangan_barang">Keterangan</label>
-                            <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang">
-                           <?= old('keterangan_barang') ?></textarea>
-                            <span class="error invalid-feedback"> <?= $validation->getError('keterangan_barang') ?></span>
+                            <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang"><?= old('keterangan_barang') ?></textarea>
+                            <span class="error invalid-feedback"><?= $validation->getError('keterangan_barang') ?></span>
                         </div>
                     </div>
 

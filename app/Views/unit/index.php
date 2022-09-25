@@ -4,8 +4,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="/barang/tambah" class="btn btn-primary mb-3"><i class="fa-solid fa-square-plus"></i> Tambah Barang</a>
-        <a href="/barang/tambah" class="btn btn-info mb-3"><i class="fa-solid fa-copy"></i> Bulk Input</a>
+        <a href="/unit/tambah" class="btn btn-primary mb-3"><i class="fa-solid fa-square-plus"></i> Tambah</a>
+
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success mb-3" role="alert">
                 <?= session()->getFlashdata('pesan') ?>
@@ -33,42 +33,31 @@
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 15px;">No</th>
-                                <th style="width:20px ;">Kode </th>
                                 <th>Nama</th>
-                                <th>Lokasi</th>
-                                <th>Unit</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $i = 1; ?>
-                            <?php foreach ($barang as $brg) : ?>
+                            <?php foreach ($units as $unit) : ?>
                                 <tr>
                                     <td class="text-center"><?= $i++; ?></td>
-                                    <td><?= $brg['kode_barang'] ?></td>
-                                    <td><?= $brg['nama_barang'] ?></td>
-                                    <td><?= $brg['lokasi_barang'] ?></td>
-                                    <td><?= $brg['unit_barang'] ?></td>
+                                    <td><?= $unit['nama_unit'] ?></td>
+                                    <td><?= $unit['alamat_unit'] ?></td>
                                     <td style="width: 150px ;" class="text-center">
-                                        <a href="/barang/detail/<?= $brg['kode_barang'] ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="/barang/edit/<?= $brg['kode_barang'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/barang/hapus/<?= $brg['kode_barang'] ?>" class="btn btn-danger btn-sm mb-2"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="/unit/edit/<?= $unit['id'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/unit/hapus/<?= $unit['id'] ?>" class="btn btn-danger btn-sm mb-2"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-
-
 
                         </tbody>
                     </table>
                 </div>
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <?= $pager->links('barang') ?>
-            </div>
         </div>
-        <!-- /.card -->
+
 
 
     </div>

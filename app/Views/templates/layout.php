@@ -103,7 +103,7 @@
 
                                 <p>
                                     Data Barang
-                                    <span class="badge badge-info right">2</span>
+
                                 </p>
                             </a>
                         </li>
@@ -123,7 +123,7 @@
 
                                 <p>
                                     Peminjaman Barang
-                                    <span class="badge badge-info right">2</span>
+
                                 </p>
                             </a>
                         </li>
@@ -148,7 +148,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/unit" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Unit</p>
                             </a>

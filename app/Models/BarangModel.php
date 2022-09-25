@@ -19,4 +19,11 @@ class BarangModel extends Model
             return $this->where('kode_barang', $kode_barang)->first();
         }
     }
+
+    public function search($keyword)
+    {
+        $builder = $this->table('barang');
+        $builder->like('nama_barang', $keyword);
+        return $builder;
+    }
 }

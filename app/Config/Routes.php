@@ -40,6 +40,25 @@ $routes->get('/barang', 'Barang::index');
 $routes->get('/barang/tambah', 'Barang::tambah');
 $routes->get('/barang/detail/(:segment)', 'Barang::detail/$1');
 $routes->post('/barang/prosestambah', 'Barang::prosestambah');
+$routes->get('/barang/checkId', 'Barang::checkId');
+$routes->get('/barang/hapus/(:segment)', 'Barang::hapus/$1');
+$routes->get('/barang/edit/(:segment)', 'Barang::edit/$1');
+$routes->post('/barang/prosesedit', 'Barang::prosesedit');
+
+$routes->get('/unit', 'Unit::index');
+$routes->get('/unit/tambah', 'Unit::tambah');
+$routes->post('/unit/prosestambah', 'Unit::prosestambah');
+$routes->get('/unit/edit/(:segment)', 'Unit::edit/$1');
+$routes->post('/unit/prosesedit', 'Unit::prosesedit');
+$routes->get('/unit/hapus/(:segment)', 'Unit::hapus/$1');
+
+$routes->get('/lokasi', 'Lokasi::index');
+$routes->get('/lokasi/tambah', 'Lokasi::tambah');
+$routes->post('/lokasi/prosestambah', 'Lokasi::prosestambah');
+$routes->get('/lokasi/edit/(:segment)', 'Lokasi::edit/$1');
+$routes->post('/lokasi/prosesedit', 'Lokasi::prosesedit');
+$routes->get('/lokasi/hapus/(:segment)', 'Lokasi::hapus/$1');
+
 
 /*
  * --------------------------------------------------------------------
