@@ -59,6 +59,16 @@ $routes->get('/lokasi/edit/(:segment)', 'Lokasi::edit/$1');
 $routes->post('/lokasi/prosesedit', 'Lokasi::prosesedit');
 $routes->get('/lokasi/hapus/(:segment)', 'Lokasi::hapus/$1');
 
+$routes->get('/pinjam', 'Pinjam::index');
+$routes->get('/pinjam/tambah', 'Pinjam::tambah');
+$routes->get('/pinjam/detail/(:segment)', 'Pinjam::detail/$1');
+$routes->post('/pinjam/prosestambah', 'Pinjam::prosestambah');
+$routes->get('/pinjam/checkId', 'Pinjam::checkId');
+$routes->get('/pinjam/hapus/(:segment)', 'Pinjam::hapus/$1');
+$routes->get('/pinjam/edit/(:segment)', 'Pinjam::edit/$1');
+$routes->post('/pinjam/prosesedit', 'Pinjam::prosesedit');
+$routes->get('/pinjam/return/(:segment)', 'Pinjam::return/$1');
+
 
 /*
  * --------------------------------------------------------------------

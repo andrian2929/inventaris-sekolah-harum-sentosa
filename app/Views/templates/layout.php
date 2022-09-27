@@ -118,12 +118,10 @@
 
                         <li class="nav-header">PEMINJAMAN</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/pinjam" class="nav-link">
                                 <i class="nav-icon fa-solid fa-box"></i>
-
                                 <p>
                                     Peminjaman Barang
-
                                 </p>
                             </a>
                         </li>
@@ -131,22 +129,7 @@
 
 
                         <li class="nav-header">PENGATURAN</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Kategori</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Merek
 
-                                </p>
-                            </a>
-
-                        </li>
                         <li class="nav-item">
                             <a href="/unit" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
@@ -155,7 +138,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/lokasi" class="nav-link">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Lokasi</p>
                             </a>
@@ -240,6 +223,10 @@
 
     <script>
         $('#reservationdate').datetimepicker({
+            format: 'Y-MM-DD'
+        })
+
+        $('#reservationdate2').datetimepicker({
             format: 'Y-MM-DD'
         })
 

@@ -263,7 +263,6 @@ class Barang extends BaseController
 
             $this->barangModel->save([
                 'id' => $this->request->getVar('id_barang'),
-                'kode_barang' => $this->checkId(),
                 'nama_barang' => $this->request->getVar('nama_barang'),
                 'kategori_barang' => $this->request->getVar('kategori_barang'),
                 'asal_barang' => $this->request->getVar('asal_barang'),
