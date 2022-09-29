@@ -10,6 +10,11 @@ class Lokasi extends BaseController
 
     public function __construct()
     {
+        if (!(session()->get('nama'))) :
+            header('Location: /login');
+            die();
+        endif;
+
         $this->lokasiModel = new LokasiModel();
         $this->unitModel = new UnitModel();
     }

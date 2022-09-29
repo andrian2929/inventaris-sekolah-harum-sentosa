@@ -19,8 +19,9 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
-$routes->setTranslateURIDashes(false);
+$routes->setTranslateURIDashes(true);
 $routes->set404Override();
+
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -72,6 +73,9 @@ $routes->get('/pinjam/return/(:segment)', 'Pinjam::return/$1');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/proseslogin', 'Login::proseslogin');
 $routes->get('/login/detach', 'Login::detach');
+
+$routes->get('/barang/bulk-input', 'Barang::bulk-input');
+$routes->post('/barang/proses-bulk-input', 'Barang::proses-bulk-input');
 
 
 /*

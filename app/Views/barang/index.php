@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <a href="/barang/tambah" class="btn btn-primary mb-3"><i class="fa-solid fa-square-plus"></i> Tambah Barang</a>
-        <a href="/barang/tambah" class="btn btn-info mb-3"><i class="fa-solid fa-copy"></i> Bulk Input</a>
+        <a href="/barang/bulk-input" class="btn btn-info mb-3"><i class="fa-solid fa-copy"></i> Bulk Input</a>
         <?php if (session()->getFlashdata('pesan')) : ?>
             <div class="alert alert-success mb-3" role="alert">
                 <?= session()->getFlashdata('pesan') ?>

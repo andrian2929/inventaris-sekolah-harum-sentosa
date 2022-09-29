@@ -32,8 +32,7 @@
                         <div class="col-6">
                             <label for="kategori_barang">Kategori</label>
                             <select name="kategori_barang" id="" class="form-control select2bs4">
-                                <?php $kategori = ['Kendaraan', 'Elektronik'] ?>
-
+                                <?php $kategori = ['Kendaraan', 'Elektronik', 'Barang Tidak Bergerak', 'Barang Bergerak'] ?>
 
                                 <?php foreach ($kategori as $ktg) : ?>
                                     <option <?php if (old('kategori_barang')) {

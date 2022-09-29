@@ -2,12 +2,15 @@
 
 <?= $this->section('content') ?>
 
-<div class="login-box" style="margin-top: -50px;">
-    <div class="login-logo">
-        <p>Inventaris <br> Harum Sentosa</p>
-    </div>
+<div class="login-box" style="margin-top: -100px;">
+
     <!-- /.login-logo -->
     <div class="card">
+        <div class="login-logo">
+            <p>Inventaris <br> Harum Sentosa</p>
+            <img width="60px" src="/img/logo_sekolah.jpeg" alt="logo sekolah">
+        </div>
+
         <div class="card-body login-card-body">
             <h4 class="login-box-msg">Halaman Login</h4>
 
@@ -38,8 +41,8 @@
                 </div>
                 <div class="row">
                     <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
                     </div>
                     <!-- /.col -->
                 </div>

@@ -4,9 +4,17 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <?= $validation->listErrors(); ?>
-            <form action="/barang/prosestambah" method="post">
+
+            <form action="/barang/proses-bulk-input" method="post">
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="jumlah_barang">Jumlah Barang</label>
+                        <input type="text" class="form-control <?= ($validation->hasError('jumlah_barang')) ? 'is-invalid' : '' ?>" id="jumlah_barang" placeholder="Masukkan nama barang" autofocus name="jumlah_barang" value="<?= old('jumlah_barang') ?>">
+                        <span class="error invalid-feedback"> <?= $validation->getError('jumlah_barang') ?></span>
+                    </div>
+
+                    <hr>
+
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>
                         <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : '' ?>" id="nama_barang" placeholder="Masukkan nama barang" autofocus name="nama_barang" value="<?= old('nama_barang') ?>">

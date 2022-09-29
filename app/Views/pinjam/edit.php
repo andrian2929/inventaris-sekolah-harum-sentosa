@@ -5,7 +5,6 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <?= $validation->listErrors() ?>
             <form action="/pinjam/prosesedit" method="post">
                 <input type="hidden" name="id" value="<?= $pinjam['id'] ?>">
                 <input type="hidden" name="kode_pinjam" value="<?= $pinjam['kode_pinjam'] ?>">
@@ -30,7 +29,7 @@
                     <div class="form-group">
                         <label>Tanggal Kembali</label>
                         <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('tanggal_kembali')) ? 'is-invalid' : '' ?>" data-target="#reservationdate2" name="tanggal_kembali" value="<?= (gettype(old('tanggal_kembali')) == 'NULL') ? $pinjam['tanggal_kembali'] : old('tanggal_kembali') ?>" placeholder="Masukkan tanggal pinjam">
+                            <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('tanggal_kembali')) ? 'is-invalid' : '' ?>" data-target="#reservationdate2" name="tanggal_kembali" value="<?= (gettype(old('tanggal_kembali')) == 'NULL') ? $pinjam['tanggal_kembali'] : old('tanggal_kembali') ?>" placeholder="Masukkan tanggal kembali">
                             <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
@@ -39,8 +38,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="kontak_pinjam">Kontak</label>
-                        <input type="text" class="form-control <?= ($validation->hasError('kontak_pinjam')) ? 'is-invalid' : '' ?>" id="kontak_pinjam" placeholder="Masukkan nama kontak" name="kontak_pinjam" value="<?= (old('nama_kontak')) ? old('nama_kontak') : $pinjam['kontak'] ?>">
+                        <label for="kontak_pinjam">Nomor Kontak</label>
+                        <input type="text" class="form-control <?= ($validation->hasError('kontak_pinjam')) ? 'is-invalid' : '' ?>" id="kontak_pinjam" placeholder="Masukkan nomor kontak" name="kontak_pinjam" value="<?= (old('nama_kontak')) ? old('nama_kontak') : $pinjam['kontak'] ?>">
                         <span class="error invalid-feedback"> <?= $validation->getError('kontak_pinjam') ?></span>
                     </div>
 

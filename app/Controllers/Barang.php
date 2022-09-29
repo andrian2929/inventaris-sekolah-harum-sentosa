@@ -13,13 +13,21 @@ class Barang extends BaseController
 
     public function __construct()
     {
+        if (!(session()->get('nama'))) :
+            header('Location: /login');
+            die();
+        endif;
+
         $this->barangModel = new BarangModel();
         $this->unitModel = new UnitModel();
         $this->lokasiModel = new LokasiModel();
         $this->merekModel = new MerekModel();
+        $this->uri = new \CodeIgniter\HTTP\URI();
     }
     public function index()
     {
+        dd($this->uri->getQuery());
+
         $keyword = $this->request->getVar(('keyword'));
         if ($keyword) {
             $barang = $this->barangModel->search($keyword);
@@ -277,6 +285,116 @@ class Barang extends BaseController
 
             ]);
             session()->setFlashdata('pesan', 'Data berhasil diubah');
+            return redirect()->to('/barang');
+        }
+    }
+
+    public function bulk_input()
+    {
+        session();
+
+        $data = ['title' => "Bulk Input Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi()];
+        return view('barang/bulk', $data);
+    }
+
+    public function proses_bulk_input()
+    {
+
+        $rules = [
+            'jumlah_barang' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Jumlah barang harus diisi',
+                    'numeric' => 'Jumlah barang harus berupa angka'
+                ]
+            ],
+
+            'nama_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama harus diisi'
+                ]
+            ],
+            'merek_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Merek harus diisi'
+                ]
+            ],
+            'harga_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga barang harus diisi',
+                    'numeric' => 'Harga harus berupa angka'
+                ]
+            ],
+            'kategori_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori harus diisi',
+
+                ]
+            ],
+            'kondisi_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kondisi barang harus diisi',
+
+                ]
+            ],
+            'unit_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Unit barang harus diisi',
+
+                ]
+            ],
+            'lokasi_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Lokasi barang harus diisi',
+
+                ]
+            ],
+            'tanggal_pembukuan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal pembukuan harus diisi',
+
+                ]
+            ],
+            'asal_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Asal barang harus diisi',
+
+                ]
+            ]
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->to('/barang/bulk-input')->withInput();
+        } else {
+
+
+            $jumlah_barang = $this->request->getVar('jumlah_barang');
+            for ($i = 0; $i < $jumlah_barang; $i++) {
+                $this->barangModel->save([
+                    'kode_barang' => $this->checkId(),
+                    'nama_barang' => $this->request->getVar('nama_barang'),
+                    'kategori_barang' => $this->request->getVar('kategori_barang'),
+                    'asal_barang' => $this->request->getVar('asal_barang'),
+                    'lokasi_barang' => $this->request->getVar('lokasi_barang'),
+                    'unit_barang' => $this->request->getVar('unit_barang'),
+                    'kondisi_barang' => $this->request->getVar('kondisi_barang'),
+                    'merek_barang' => ucwords($this->request->getVar('merek_barang')),
+                    'harga_barang' => $this->request->getVar('harga_barang'),
+                    'foto_barang' => 'default.jpg',
+                    'keterangan_barang' => $this->request->getVar('keterangan_barang'),
+                    'tanggal_pembukuan' => $this->request->getVar('tanggal_pembukuan'),
+                ]);
+            }
+            session()->setFlashdata('pesan', 'Berhasil menambahkan ' . $jumlah_barang . ' data');
             return redirect()->to('/barang');
         }
     }

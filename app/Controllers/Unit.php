@@ -9,6 +9,11 @@ class Unit extends BaseController
 
     public function __construct()
     {
+        if (!(session()->get('nama'))) :
+            header('Location: /login');
+            die();
+        endif;
+
         $this->unitModel = new UnitModel();
     }
     public function index()
