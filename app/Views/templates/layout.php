@@ -143,6 +143,14 @@
                                 <p>Lokasi</p>
                             </a>
                         </li>
+
+
+                        <?php if ((session()->get('nama'))) : ?>
+                            <li>
+                                <a onclick="return confirm('Apakah anda ingin keluar');" href="login/detach" class="btn btn-danger btn-block mt-4">Logout</a>
+                            </li>
+                        <?php endif; ?>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

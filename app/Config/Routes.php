@@ -69,6 +69,10 @@ $routes->get('/pinjam/edit/(:segment)', 'Pinjam::edit/$1');
 $routes->post('/pinjam/prosesedit', 'Pinjam::prosesedit');
 $routes->get('/pinjam/return/(:segment)', 'Pinjam::return/$1');
 
+$routes->get('/login', 'Login::index');
+$routes->post('/login/proseslogin', 'Login::proseslogin');
+$routes->get('/login/detach', 'Login::detach');
+
 
 /*
  * --------------------------------------------------------------------
