@@ -65,6 +65,7 @@ class Login extends BaseController
     public function detach()
     {
         session()->destroy();
+
         session()->setFlashdata('pesan', 'Anda berhasil logout');
         return redirect()->to('/login');
     }

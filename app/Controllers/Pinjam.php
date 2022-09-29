@@ -11,12 +11,18 @@ class Pinjam extends BaseController
 
     public function __construct()
     {
+        if (!(session()->get('nama'))) :
+            header('Location: /login');
+            die();
+        endif;
+
         $this->pinjamModel = new PinjamModel();
         $this->barangModel = new BarangModel();
     }
 
     public function index()
     {
+
         $keyword = $this->request->getVar(('keyword'));
         if ($keyword) {
             $pinjam = $this->pinjamModel->search($keyword);
