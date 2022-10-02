@@ -22,24 +22,28 @@ class Barang extends BaseController
         $this->unitModel = new UnitModel();
         $this->lokasiModel = new LokasiModel();
         $this->merekModel = new MerekModel();
-        $this->uri = new \CodeIgniter\HTTP\URI();
+        $this->uri = service('uri');
     }
     public function index()
     {
-        dd($this->uri->getQuery());
+
+
+        $redirect = $this->request->getVar('page_barang');
 
         $keyword = $this->request->getVar(('keyword'));
         if ($keyword) {
             $barang = $this->barangModel->search($keyword);
         } else {
-            $barang = $this->barangModel;
+            $barang = $this->barangModel->getBarangTabel();
         }
+
 
         $data = [
             'title' => "Tabel Data Barang",
-            'barang' => $barang->paginate(10, 'barang'),
+            'barang' => $barang,
             'pager' => $this->barangModel->pager,
-            'keyword' => $keyword
+            'keyword' => $keyword,
+            'redirect' => $redirect
         ];
         return view('barang/index', $data);
     }
@@ -56,13 +60,14 @@ class Barang extends BaseController
     {
 
 
-        $data = ['title' => 'Detail Data Barang', 'barang' => $this->barangModel->getBarang($kode_barang)];
+        $data = ['title' => 'Detail Data Barang', 'barang' => $this->barangModel->getBarangDetail($kode_barang), 'redirect_kode_barang' => $kode_barang];
         return view('barang/detail', $data);
     }
 
 
     public function tampil()
     {
+        $redirect =  $this->uri->getQuery();
 
         $data = ['title' => "Tabel Data Barang", 'barang' => $this->barangModel->getBarang()];
         return view('barang/index', $data);
@@ -181,11 +186,43 @@ class Barang extends BaseController
 
     public function hapus($kode_barang)
     {
-        // hapus barang berdasarkan kode barang
-        $this->barangModel->where('kode_barang', $kode_barang)->delete();
+
+
+        $barangs = explode(',', $kode_barang);
+
+
+        if (count($barangs) == 1) {
+
+            $this->barangModel->where('kode_barang', $barangs[0])->delete();
+        } else {
+            foreach ($barangs as $barang) {
+                $this->barangModel->where('kode_barang', $barang)->delete();
+            }
+        }
+
+        if ($this->request->getVar('redirect')) {
+            if ($this->request->getVar('redirect') == 'detail') {
+                $url_before =  explode(',', $this->request->getVar('redirect_kode'));
+
+                $url_before = array_diff($url_before, $barangs);
+
+
+
+
+
+                $redirect = '/barang/detail/' . implode(',', $url_before);
+            } else {
+                $redirect = '/barang';
+            }
+        } else {
+            $redirect = '/barang';
+        }
+
+        return redirect()->to($redirect);
 
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/barang');
+        // return redirect()->to('/barang');
+
     }
 
     public function edit($kode_barang)

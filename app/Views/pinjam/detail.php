@@ -1,6 +1,7 @@
 <?= $this->extend('templates/layout') ?>
 
 <?= $this->section('content') ?>
+<?= dd($barang); ?>
 <div class="card mb-3">
     <div class="row ">
         <div class="col-md-8">

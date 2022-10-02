@@ -33,7 +33,8 @@ class PinjamModel extends Model
 
     public function getBarangPinjam()
     {
+
         $db = \Config\Database::connect();
-        $db->query("SELECT id, nama_barang, lokasi_barang from barang where id not in (select nama_barang from pinjam where is_returned = '0')")->getResultArray();
+        return  $db->query("SELECT id, nama_barang, lokasi_barang from barang where id not in (select nama_barang from pinjam where is_returned = '0')")->getResultArray();
     }
 }

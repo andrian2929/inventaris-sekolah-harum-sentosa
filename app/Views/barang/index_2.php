@@ -37,7 +37,6 @@
                                 <th>Nama</th>
                                 <th>Lokasi</th>
                                 <th>Unit</th>
-                                <th>Jumlah</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -46,15 +45,14 @@
                             <?php foreach ($barang as $brg) : ?>
                                 <tr>
                                     <td class="text-center"><?= $i++; ?></td>
+                                    <td><?= $brg['kode_barang'] ?></td>
                                     <td><?= $brg['nama_barang'] ?></td>
-                                    <td><?= $brg['merek_barang'] ?></td>
                                     <td><?= $brg['lokasi_barang'] ?></td>
                                     <td><?= $brg['unit_barang'] ?></td>
-                                    <td><?= $brg['jumlah'] ?></td>
                                     <td style="width: 150px ;" class="text-center">
                                         <a href="/barang/detail/<?= $brg['kode_barang'] ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
                                         <a href="/barang/edit/<?= $brg['kode_barang'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
-
+                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/barang/hapus/<?= $brg['kode_barang'] ?>" class="btn btn-danger btn-sm mb-2"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
