@@ -38,12 +38,12 @@ class BarangModel extends Model
         $this->select('nama_barang, merek_barang, lokasi_barang, unit_barang, harga_barang, group_concat(kode_barang) as kode_barang');
         $this->groupBy(['nama_barang', 'merek_barang', 'lokasi_barang', 'unit_barang', 'harga_barang']);
         $this->orderBy('lokasi_barang', 'DESC');
-        return $this->paginate(10, 'pinjam');
+        return $this->paginate(10, 'barang');
     }
 
     public function searchBarangTabel($keyword)
     {
-        $keyword = $this->request->getVar('keyword');
+
         $this->db->table("barang");
         $this->selectCount('*', 'jumlah');
         $this->select('nama_barang, merek_barang, lokasi_barang, unit_barang, harga_barang');
@@ -59,8 +59,12 @@ class BarangModel extends Model
 
     public function search($keyword)
     {
-        $builder = $this->table('barang');
-        $builder->like('nama_barang', $keyword);
-        return $builder;
+        $this->db->table('barang');
+        $this->like('nama_barang', $keyword);
+        $this->orLike('kode_barang', $keyword);
+        $this->orLike('lokasi_barang', $keyword);
+        $this->orLike('unit_barang', $keyword);
+        $this->orLike('merek_barang', $keyword);
+        return $this->paginate(10, 'barang');
     }
 }

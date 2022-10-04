@@ -30,12 +30,19 @@ class Barang extends BaseController
 
         $redirect = $this->request->getVar('page_barang');
 
+        $redirect = $this->request->getVar('page_barang') ? $this->request->getVar('page_barang') : 1;
+
+
         $keyword = $this->request->getVar(('keyword'));
         if ($keyword) {
             $barang = $this->barangModel->search($keyword);
+            $view = 'barang/index2';
         } else {
+
             $barang = $this->barangModel->getBarangTabel();
+            $view = 'barang/index';
         }
+
 
 
         $data = [
@@ -45,7 +52,7 @@ class Barang extends BaseController
             'keyword' => $keyword,
             'redirect' => $redirect
         ];
-        return view('barang/index', $data);
+        return view($view, $data);
     }
 
     public function tambah()
@@ -60,7 +67,9 @@ class Barang extends BaseController
     {
 
 
-        $data = ['title' => 'Detail Data Barang', 'barang' => $this->barangModel->getBarangDetail($kode_barang), 'redirect_kode_barang' => $kode_barang];
+        $data = ['title' => 'Detail Data Barang', 'barang' => $this->barangModel->getBarangDetail($kode_barang), 'redirect_kode_barang' => $kode_barang, 'redirect' => $this->request->getVar('redirect_page'), 'redirect_kode' => $this->request->getVar('redirect_kode_barang'), 'keyword' => $this->request->getVar('keyword')];
+
+
         return view('barang/detail', $data);
     }
 
@@ -186,7 +195,7 @@ class Barang extends BaseController
 
     public function hapus($kode_barang)
     {
-
+        $redirect = '/barang';
 
         $barangs = explode(',', $kode_barang);
 
@@ -202,34 +211,39 @@ class Barang extends BaseController
 
         if ($this->request->getVar('redirect')) {
             if ($this->request->getVar('redirect') == 'detail') {
-                $url_before =  explode(',', $this->request->getVar('redirect_kode'));
+                if ($this->request->getVar('redirect_kode')) {
+                    if ($this->request->getVar('redirect_page')) {
 
-                $url_before = array_diff($url_before, $barangs);
-
-
-
-
-
-                $redirect = '/barang/detail/' . implode(',', $url_before);
+                        $url_before =  explode(',', $this->request->getVar('redirect_kode'));
+                        $url_before = array_diff($url_before, $barangs);
+                        $redirect = '/barang/detail/' . implode(',', $url_before) . '?redirect_page=' . $this->request->getVar('redirect_page');
+                    } else {
+                        $redirect = '/barang';
+                    }
+                } else {
+                    $redirect = '/barang';
+                }
             } else {
                 $redirect = '/barang';
             }
-        } else {
-            $redirect = '/barang';
+        } else if ($this->request->getVar('redirect_page')) {
+
+            if ($this->request->getVar('keyword')) {
+                $redirect = '/barang?keyword=' . $this->request->getVar('keyword') . '&page_barang=' . $this->request->getVar('redirect_page');
+            } else {
+                $redirect = '/barang?page_barang=' . $this->request->getVar('redirect_page');
+            }
         }
 
-        return redirect()->to($redirect);
-
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        // return redirect()->to('/barang');
-
+        return redirect()->to($redirect);
     }
 
     public function edit($kode_barang)
     {
         session();
 
-        $data = ['title' => "Edit Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi(), 'merek' => $this->merekModel->getMerek(), 'barang' => $this->barangModel->getBarang($kode_barang)];
+        $data = ['title' => "Edit Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi(), 'merek' => $this->merekModel->getMerek(), 'barang' => $this->barangModel->getBarang($kode_barang), 'redirect_page' => $this->request->getVar('redirect_page'), 'redirect_codes' => $this->request->getVar('redirect_kode'), 'redirect' => $this->request->getVar('redirect')];
         return view('barang/edit', $data);
     }
 
@@ -302,7 +316,7 @@ class Barang extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/barang/edit/' . $this->request->getVar('kode_barang'))->withInput();
+            return redirect()->to('/barang/edit/' . $this->request->getVar('kode_barang') . '?redirect_page=' . $this->request->getVar('redirect_page'))->withInput();
         } else {
 
 
@@ -322,7 +336,19 @@ class Barang extends BaseController
 
             ]);
             session()->setFlashdata('pesan', 'Data berhasil diubah');
-            return redirect()->to('/barang');
+
+
+            if ($this->request->getVar('redirect_page')) {
+                if ($this->request->getVar('redirect') == 'detail' and $this->request->getVar('redirect_codes')) {
+                    $redirect = '/barang/detail/' . $this->request->getVar('redirect_codes') . '?redirect_page=' . $this->request->getVar('redirect_page');
+                } else {
+                    $redirect = '/barang?page_barang=' . $this->request->getVar('redirect_page');
+                }
+            } else {
+                $redirect = '/barang';
+            }
+
+            return redirect()->to($redirect);
         }
     }
 

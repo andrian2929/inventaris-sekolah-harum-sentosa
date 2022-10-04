@@ -18,7 +18,7 @@
                     <div class="col-md-8">
                         <form action="" method="get">
                             <div class="input-group">
-                                <input name="keyword" type="search" class="form-control" placeholder="Cari disini" value="<?= $keyword ?>">
+                                <input name="keyword" type="search" class="form-control" placeholder="Cari berdasarkan kode, nama, merek, dan lokasi/ruangan " value="<?= $keyword ?>">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fa fa-search"></i>
@@ -33,8 +33,8 @@
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 15px;">No</th>
-                                <th style="width:20px ;">Kode </th>
-                                <th>Nama</th>
+                                <th>Nama </th>
+                                <th>Merek</th>
                                 <th>Lokasi</th>
                                 <th>Unit</th>
                                 <th>Jumlah</th>
@@ -42,6 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             <?php $i = 1; ?>
                             <?php foreach ($barang as $brg) : ?>
                                 <tr>
@@ -52,8 +53,8 @@
                                     <td><?= $brg['unit_barang'] ?></td>
                                     <td><?= $brg['jumlah'] ?></td>
                                     <td style="width: 150px ;" class="text-center">
-                                        <a href="/barang/detail/<?= $brg['kode_barang'] ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="/barang/edit/<?= $brg['kode_barang'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="/barang/detail/<?= $brg['kode_barang'] ?>?redirect_page=<?= $redirect ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
+
 
                                     </td>
                                 </tr>

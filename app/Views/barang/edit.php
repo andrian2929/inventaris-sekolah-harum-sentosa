@@ -4,10 +4,12 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-
             <form action="/barang/prosesedit" method="post">
                 <input type="hidden" value="<?= $barang['id'] ?>" name="id_barang">
                 <input type="hidden" value="<?= $barang['kode_barang'] ?>" name="kode_barang">
+                <input type="hidden" value="<?= $redirect_page ?>" name="redirect_page">
+                <input type="hidden" value="<?= $redirect_codes ?>" name="redirect_codes">
+                <input type="hidden" value="<?= $redirect ?>" name="redirect">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>
