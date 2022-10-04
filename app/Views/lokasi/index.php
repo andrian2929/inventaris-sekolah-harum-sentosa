@@ -18,7 +18,7 @@
                     <div class="col-md-8">
                         <form action="" method="get">
                             <div class="input-group">
-                                <input name="keyword" type="search" class="form-control" placeholder="Cari disini" value="<?= $keyword ?>">
+                                <input name="keyword" type="search" class="form-control" placeholder="Cari berdasarkan nama" value="<?= $keyword ?>">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fa fa-search"></i>

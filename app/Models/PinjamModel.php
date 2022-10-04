@@ -28,6 +28,8 @@ class PinjamModel extends Model
         $this->select('pinjam.id, pinjam.kode_pinjam, barang.kode_barang , barang.nama_barang, pinjam.nama_peminjam, pinjam.tanggal_pinjam, pinjam.tanggal_kembali, pinjam.kontak, pinjam.keterangan, pinjam.is_returned');
         $this->join('barang', 'pinjam.nama_barang = barang.id', 'left');
         $this->like('pinjam.nama_peminjam', $keyword);
+        $this->orLike('barang.nama_barang', $keyword);
+        $this->orLike('kode_pinjam', $keyword);
         return $this->paginate(10, 'pinjam');
     }
 

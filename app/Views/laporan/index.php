@@ -52,7 +52,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="/laporan/generatepdf" type="submit" class="btn btn-primary"><i class="fa-solid fa-download"></i> Export as PDF</a>
+                    <button value="exportpdf" name="pdf" type="submit" class="btn btn-primary"><i class="fa-solid fa-download"></i> Export as PDF</button>
+
+                    <button value="exportexcel" name="excel" type="submit" class="btn btn-success"><i class="fa-solid fa-download"></i> Export as Excel</button>
                 </div>
         </div>
 

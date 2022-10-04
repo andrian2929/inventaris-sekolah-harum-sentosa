@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
 
-    protected $table            = 'unit';
-    protected $allowedFields    = ['nama', 'email', ''];
+    protected $table            = 'user';
+    protected $allowedFields    = ['nama', 'username', 'password'];
     protected $useTimestamps = true;
 
 
@@ -22,10 +22,8 @@ class UserModel extends Model
         }
     }
 
-    public function search($keyword)
+    public function gerUserByUsername($username)
     {
-        $builder = $this->table('unit');
-        $builder->like('nama_unit', $keyword);
-        return $builder;
+        return $this->where(['username' => $username])->first();
     }
 }

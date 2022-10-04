@@ -28,7 +28,7 @@ class Lokasi extends BaseController
         }
 
 
-        $data = ['title' => 'Data Unit', 'lokasis' => $lokasi, 'keyword' => $keyword];
+        $data = ['title' => 'Data Lokasi/Ruangan', 'lokasis' => $lokasi, 'keyword' => $keyword];
         return view('lokasi/index', $data);
     }
 
@@ -36,7 +36,7 @@ class Lokasi extends BaseController
     {
         session();
 
-        $data = ['title' => 'Tambah Lokasi', 'validation' => \Config\Services::validation(), 'units' => $this->unitModel->getUnit()];
+        $data = ['title' => 'Tambah Lokasi/Ruangan', 'validation' => \Config\Services::validation(), 'units' => $this->unitModel->getUnit()];
         return view('lokasi/tambah', $data);
     }
 
