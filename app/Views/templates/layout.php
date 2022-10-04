@@ -104,7 +104,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/barang/tambah" class="nav-link">
                                 <i class="nav-icon fa-solid fa-square-plus"></i>
                                 <p>
                                     Tambah Barang
