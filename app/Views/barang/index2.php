@@ -51,7 +51,7 @@
                                     <td><?= $brg['unit_barang'] ?></td>
                                     <td style="width: 150px ;" class="text-center">
                                         <a href="/barang/detail/<?= $brg['kode_barang'] ?>?keyword=<?= $keyword ?>&redirect_page=<?= $redirect ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="/barang/edit/<?= $brg['kode_barang'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="/barang/edit/<?= $brg['kode_barang'] ?>?keyword=<?= $keyword ?>&redirect_page=<?= $redirect ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/barang/hapus/<?= $brg['kode_barang'] ?>?keyword=<?= $keyword ?>&redirect_page=<?= $redirect ?>" class="btn btn-danger btn-sm mb-2"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>

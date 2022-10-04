@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-download"></i> Unduh</button>
+                    <a href="/laporan/generatepdf" type="submit" class="btn btn-primary"><i class="fa-solid fa-download"></i> Export as PDF</a>
                 </div>
         </div>
 

@@ -10,6 +10,7 @@
                 <input type="hidden" value="<?= $redirect_page ?>" name="redirect_page">
                 <input type="hidden" value="<?= $redirect_codes ?>" name="redirect_codes">
                 <input type="hidden" value="<?= $redirect ?>" name="redirect">
+                <input type="hidden" value="<?= $keyword ?>" name="keyword">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>

@@ -123,6 +123,18 @@
                         </li>
 
 
+                        <li class="nav-header">Laporan</li>
+                        <li class="nav-item">
+                            <a href="/laporan" class="nav-link">
+                                <i class="nav-icon fa-solid fa-box"></i>
+                                <p>
+                                    Laporan
+                                </p>
+                            </a>
+                        </li>
+
+
+
 
                         <li class="nav-header">PENGATURAN</li>
 

@@ -133,18 +133,20 @@
 
                         <tr>
                             <td style="width:150px"><b>Nama Barang</b></td>
-                            <td scope="col">Kursi Lipat</td>
+                            <td scope="col"><?= $barang[0]['nama_barang'] ?></td>
                         </tr>
 
                         <tr>
                             <td style="width:150px"><b>Unit</b></td>
-                            <td>SMK</td>
+                            <td>
+                                <?= $barang[0]['unit_barang'] ?>
+                            </td>
 
                         </tr>
 
                         <tr>
                             <td style="width:150px"><b>Lokasi/Ruangan</b></td>
-                            <td>Ruangan XI-1 SMK</td>
+                            <td><?= $barang[0]['lokasi_barang'] ?></td>
                         </tr>
 
                         <tr>
@@ -156,6 +158,12 @@
             </div>
         </div>
     </div>
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="alert alert-success mb-3" role="alert">
+            <?= session()->getFlashdata('pesan') ?>
+        </div>
+    <?php endif; ?>
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">

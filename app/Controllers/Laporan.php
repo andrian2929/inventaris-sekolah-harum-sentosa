@@ -23,7 +23,7 @@ class Laporan extends Controller
         $data = ['title' => "Laporan", 'units' => $this->unitModel->getUnit(), 'lokasis' => $this->lokasiModel->getLokasi(), 'lokasis' => $this->lokasiModel->getLokasi(), 'validation' => \Config\Services::validation()];
         return view('laporan/index', $data);
     }
-    public function generate()
+    public function generatepdf()
     {
         $lokasi = $this->request->getVar('nama_lokasi');
         $unit = $this->request->getVar('nama_unit');

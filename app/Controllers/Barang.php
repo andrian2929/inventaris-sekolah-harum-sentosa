@@ -243,7 +243,7 @@ class Barang extends BaseController
     {
         session();
 
-        $data = ['title' => "Edit Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi(), 'merek' => $this->merekModel->getMerek(), 'barang' => $this->barangModel->getBarang($kode_barang), 'redirect_page' => $this->request->getVar('redirect_page'), 'redirect_codes' => $this->request->getVar('redirect_kode'), 'redirect' => $this->request->getVar('redirect')];
+        $data = ['title' => "Edit Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi(), 'merek' => $this->merekModel->getMerek(), 'barang' => $this->barangModel->getBarang($kode_barang), 'redirect_page' => $this->request->getVar('redirect_page'), 'redirect_codes' => $this->request->getVar('redirect_kode'), 'redirect' => $this->request->getVar('redirect'), 'keyword' => $this->request->getVar('keyword')];
         return view('barang/edit', $data);
     }
 
@@ -341,6 +341,8 @@ class Barang extends BaseController
             if ($this->request->getVar('redirect_page')) {
                 if ($this->request->getVar('redirect') == 'detail' and $this->request->getVar('redirect_codes')) {
                     $redirect = '/barang/detail/' . $this->request->getVar('redirect_codes') . '?redirect_page=' . $this->request->getVar('redirect_page');
+                } else if ($this->request->getVar('keyword')) {
+                    $redirect = '/barang?keyword=' . $this->request->getVar('keyword') . '&page_barang=' . $this->request->getVar('redirect_page');
                 } else {
                     $redirect = '/barang?page_barang=' . $this->request->getVar('redirect_page');
                 }

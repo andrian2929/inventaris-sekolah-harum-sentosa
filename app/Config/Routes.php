@@ -78,7 +78,9 @@ $routes->get('/barang/bulk-input', 'Barang::bulk-input');
 $routes->post('/barang/proses-bulk-input', 'Barang::proses-bulk-input');
 
 $routes->get('/laporan', 'Laporan::index');
-$routes->post('/laporan/generate', 'Laporan::generate');
+$routes->get('/laporan/generatepdf', 'Laporan::generatepdf');
+
+
 
 
 /*
