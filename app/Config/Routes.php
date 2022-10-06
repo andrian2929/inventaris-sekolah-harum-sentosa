@@ -80,9 +80,7 @@ $routes->post('/barang/proses-bulk-input', 'Barang::proses-bulk-input');
 $routes->get('/laporan', 'Laporan::index');
 $routes->post('/laporan/generate', 'Laporan::generate');
 
-$routes->get('/user', 'User::index');
-$routes->post('/user/proses-edit', 'User::proses-edit');
-$routes->post('/user/proses-edit', 'User::ganti-password');
+
 
 
 

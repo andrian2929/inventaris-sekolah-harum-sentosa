@@ -77,11 +77,11 @@
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
+
                     <div class="info">
-                        <a href="#" class="d-block">Andrian Ramadan</a>
+                        <a href="#" class="d-block">
+                            <?= (session()->get('nama')) ? session()->get('nama') : '' ?>
+                        </a>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                         <li class="nav-header">Laporan</li>
                         <li class="nav-item">
                             <a href="/laporan" class="nav-link">
-                                <i class="nav-icon fa-solid fa-box"></i>
+                                <i class="nav-icon fa-solid fa-print"></i>
                                 <p>
                                     Laporan
                                 </p>
@@ -155,7 +155,7 @@
 
                         <?php if ((session()->get('nama'))) : ?>
                             <li>
-                                <a onclick="return confirm('Apakah anda ingin keluar');" href="login/detach" class="btn btn-danger btn-block mt-4">Logout</a>
+                                <a onclick="return confirm('Apakah anda ingin keluar');" href="/login/detach" class="btn btn-danger btn-block mt-4">Logout</a>
                             </li>
                         <?php endif; ?>
 
