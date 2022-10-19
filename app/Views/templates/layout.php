@@ -237,7 +237,17 @@
     <!-- AdminLTE App -->
     <script src="/adminlte/dist/js/adminlte.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js">
+
+
+    </script>
+
     <script>
+        $(document).ready(function() {
+            bsCustomFileInput.init()
+        })
+
+        console.log('andrian');
         $('#reservationdate').datetimepicker({
             format: 'Y-MM-DD'
         })

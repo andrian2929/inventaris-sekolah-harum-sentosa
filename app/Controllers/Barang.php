@@ -84,6 +84,7 @@ class Barang extends BaseController
 
     public function prosestambah()
     {
+
         $rules = [
             'nama_barang' => [
                 'rules' => 'required',
@@ -133,9 +134,10 @@ class Barang extends BaseController
                 ]
             ],
             'tanggal_pembukuan' => [
-                'rules' => 'required',
+                'rules' => 'required|valid_date[Y-m-d]',
                 'errors' => [
                     'required' => 'Tanggal pembukuan harus diisi',
+                    'valid_date' => 'Format tanggal salah'
 
                 ]
             ],
@@ -145,6 +147,15 @@ class Barang extends BaseController
                     'required' => 'Asal barang harus diisi',
 
                 ]
+            ],
+            'foto_barang' => [
+                'rules' => 'uploaded[foto_barang]|max_size[foto_barang,10240 ]|is_image[foto_barang]|mime_in[foto_barang,image/jpg,image/jpeg]',
+                'errors' => [
+                    'uploaded' => 'Foto belum diunggah',
+                    'max_size' => 'Ukuran foto maksimal 10MB',
+                    'is_image' => 'Kamu mengunggah file yang bukan foto',
+                    'mime_in' => 'Unggah foto dengan format jpg/jpeg'
+                ]
             ]
         ];
 
@@ -152,6 +163,9 @@ class Barang extends BaseController
             return redirect()->to('/barang/tambah')->withInput();
         } else {
 
+            $foto_barang = $this->request->getFile('foto_barang');
+            $nama_foto = $foto_barang->getRandomName();
+            $foto_barang->move('img/barang', $nama_foto);
 
             $this->barangModel->save([
                 'kode_barang' => $this->checkId(),
@@ -163,7 +177,7 @@ class Barang extends BaseController
                 'kondisi_barang' => $this->request->getVar('kondisi_barang'),
                 'merek_barang' => ucwords($this->request->getVar('merek_barang')),
                 'harga_barang' => $this->request->getVar('harga_barang'),
-                'foto_barang' => 'default.jpg',
+                'foto_barang' => $nama_foto,
                 'keterangan_barang' => $this->request->getVar('keterangan_barang'),
                 'tanggal_pembukuan' => $this->request->getVar('tanggal_pembukuan'),
 
@@ -201,8 +215,13 @@ class Barang extends BaseController
 
 
         if (count($barangs) == 1) {
-
+            $foto_barang = $this->barangModel->where('kode_barang', $barangs[0])->first()['foto_barang'];
             $this->barangModel->where('kode_barang', $barangs[0])->delete();
+
+            if ($this->request->getVar('redirect_kode') == null) {
+
+                unlink('img/barang/' . $foto_barang);
+            }
         } else {
             foreach ($barangs as $barang) {
                 $this->barangModel->where('kode_barang', $barang)->delete();
@@ -300,9 +319,10 @@ class Barang extends BaseController
                 ]
             ],
             'tanggal_pembukuan' => [
-                'rules' => 'required',
+                'rules' => 'required|valid_date[Y-m-d]',
                 'errors' => [
                     'required' => 'Tanggal pembukuan harus diisi',
+                    'valid_date' => 'Format tanggal salah'
 
                 ]
             ],
@@ -330,7 +350,6 @@ class Barang extends BaseController
                 'kondisi_barang' => $this->request->getVar('kondisi_barang'),
                 'merek_barang' => ucwords($this->request->getVar('merek_barang')),
                 'harga_barang' => $this->request->getVar('harga_barang'),
-                'foto_barang' => 'default.jpg',
                 'keterangan_barang' => $this->request->getVar('keterangan_barang'),
                 'tanggal_pembukuan' => $this->request->getVar('tanggal_pembukuan'),
 
@@ -422,9 +441,10 @@ class Barang extends BaseController
                 ]
             ],
             'tanggal_pembukuan' => [
-                'rules' => 'required',
+                'rules' => 'required|valid_date[Y-m-d]',
                 'errors' => [
                     'required' => 'Tanggal pembukuan harus diisi',
+                    'valid_date' => 'Format tanggal pembukuan salah'
 
                 ]
             ],
@@ -434,16 +454,29 @@ class Barang extends BaseController
                     'required' => 'Asal barang harus diisi',
 
                 ]
+            ],
+            'foto_barang' => [
+                'rules' => 'uploaded[foto_barang]|max_size[foto_barang,10240 ]|is_image[foto_barang]|mime_in[foto_barang,image/jpg,image/jpeg]',
+                'errors' => [
+                    'uploaded' => 'Foto belum diunggah',
+                    'max_size' => 'Ukuran foto maksimal 10MB',
+                    'is_image' => 'Kamu mengunggah file yang bukan foto',
+                    'mime_in' => 'Unggah foto dengan format jpg/jpeg'
+                ]
             ]
         ];
 
         if (!$this->validate($rules)) {
             return redirect()->to('/barang/bulk-input')->withInput();
         } else {
-
+            $foto_barang = $this->request->getFile('foto_barang');
+            $nama_foto = $foto_barang->getRandomName();
+            $foto_barang->move('img/barang', $nama_foto);
 
             $jumlah_barang = $this->request->getVar('jumlah_barang');
             for ($i = 0; $i < $jumlah_barang; $i++) {
+
+
                 $this->barangModel->save([
                     'kode_barang' => $this->checkId(),
                     'nama_barang' => $this->request->getVar('nama_barang'),
@@ -454,7 +487,7 @@ class Barang extends BaseController
                     'kondisi_barang' => $this->request->getVar('kondisi_barang'),
                     'merek_barang' => ucwords($this->request->getVar('merek_barang')),
                     'harga_barang' => $this->request->getVar('harga_barang'),
-                    'foto_barang' => 'default.jpg',
+                    'foto_barang' =>   $nama_foto,
                     'keterangan_barang' => $this->request->getVar('keterangan_barang'),
                     'tanggal_pembukuan' => $this->request->getVar('tanggal_pembukuan'),
                 ]);

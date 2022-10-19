@@ -5,115 +5,111 @@
 <?php if (count($barang) == 1) : ?>
     <?php $barang = $barang[0] ?>
     <div class="card mb-3">
-
-        <div class="row container ">
-            <div class="col-md-8">
-                <div class="card-body">
-
+        <div class="card-body">
+            <div class="row container">
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="/img/barang/<?= $barang['foto_barang'] ?>" alt="">
+                </div>
+                <div class="col-md-8">
                     <?php if (empty($redirect_kode)) : ?>
-                        <div class="col-auto">
-                            <?php if (!empty($keyword)) : ?>
-                                <a href="/barang?keyword=<?= $keyword ?>&page_barang=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel barang</a>
-                            <?php else : ?>
-                                <a href="/barang?page_barang=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel barang</a>
-                            <?php endif; ?>
+
+                        <?php if (!empty($keyword)) : ?>
+                            <a href="/barang?keyword=<?= $keyword ?>&page_barang=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel barang</a>
                         <?php else : ?>
-                            <a href="/barang/detail/<?= $redirect_kode ?>?redirect_page=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel detail</a>
+                            <a href="/barang?page_barang=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel barang</a>
                         <?php endif; ?>
-                        </div>
 
-                        <table class="table table-bordered">
+                    <?php else : ?>
+                        <a href="/barang/detail/<?= $redirect_kode ?>?redirect_page=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel detail</a>
+                    <?php endif; ?>
 
-                            <tr>
-                                <td style="width:150px"><b>Kode</b></td>
-                                <td scope="col"><?= $barang['kode_barang'] ?></td>
+                    <table class="table table-bordered">
 
-                            </tr>
+                        <tr>
+                            <td style="width:150px"><b>Kode</b></td>
+                            <td scope="col"><?= $barang['kode_barang'] ?></td>
 
-
-                            <tr>
-                                <td style="width:150px"><b>Nama</b></td>
-                                <td><?= $barang['nama_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Merek</b></td>
-                                <td><?= $barang['merek_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Harga</b></td>
-                                <td>
-                                    <?php
-                                    $fmt = numfmt_create('id_ID', NumberFormatter::CURRENCY);
-                                    echo numfmt_format_currency($fmt, $barang['harga_barang'], "IDR")
-                                    ?>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td style="width:150px"><b>Kategori</b></td>
-                                <td><?= $barang['kategori_barang'] ?></td>
-
-                            </tr>
-                            <tr>
-                                <td style="width:150px"><b>Asal Barang</b></td>
-                                <td><?= $barang['asal_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Lokasi</b></td>
-                                <td><?= $barang['lokasi_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Unit</b></td>
-                                <td><?= $barang['unit_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Kondisi</b></td>
-                                <td><?= $barang['kondisi_barang'] ?></td>
-
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Keterangan</b></td>
-                                <td><?= $barang['keterangan_barang'] ?></td>
-                            </tr>
-
-                            <tr>
-                                <td style="width:150px"><b>Tanggal Pembukuan</b></td>
-                                <td><?= date('d/m/Y', strtotime($barang['tanggal_pembukuan'])) ?></td>
-                            </tr>
+                        </tr>
 
 
-                        </table>
-                        <div class="row">
+                        <tr>
+                            <td style="width:150px"><b>Nama</b></td>
+                            <td><?= $barang['nama_barang'] ?></td>
 
-                            <?php if ($redirect_kode or $keyword) : ?>
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Merek</b></td>
+                            <td><?= $barang['merek_barang'] ?></td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Harga</b></td>
+                            <td>
+                                <?php
+                                $fmt = numfmt_create('id_ID', NumberFormatter::CURRENCY);
+                                echo numfmt_format_currency($fmt, $barang['harga_barang'], "IDR")
+                                ?>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><b>Kategori</b></td>
+                            <td><?= $barang['kategori_barang'] ?></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width:150px"><b>Asal Barang</b></td>
+                            <td><?= $barang['asal_barang'] ?></td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Lokasi</b></td>
+                            <td><?= $barang['lokasi_barang'] ?></td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Unit</b></td>
+                            <td><?= $barang['unit_barang'] ?></td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Kondisi</b></td>
+                            <td><?= $barang['kondisi_barang'] ?></td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Keterangan</b></td>
+                            <td><?= $barang['keterangan_barang'] ?></td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:150px"><b>Tanggal Pembukuan</b></td>
+                            <td><?= date('d/m/Y', strtotime($barang['tanggal_pembukuan'])) ?></td>
+                        </tr>
 
 
+                    </table>
+                    <div class="row">
 
-                            <?php else : ?>
-                                <div class="col-auto">
-                                    <a href="/barang/edit/<?= $barang['kode_barang'] ?>?redirect_page=<?= $redirect ?>" class="btn btn-info btn-sm mb-2 mt-2"><i class="fa-solid fa-pen-to-square"></i> Edit </a>
-                                    <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/barang/hapus/<?= $barang['kode_barang'] ?>?redirect_page=<?= $redirect ?>" class="btn btn-danger btn-sm mb-2 mt-2"><i class="fa-solid fa-trash"></i> Hapus </a>
-
-                                </div>
-
-                            <?php endif; ?>
+                        <?php if ($redirect_kode or $keyword) : ?>
 
 
 
+                        <?php else : ?>
+                            <div class="col-auto">
+                                <a href="/barang/edit/<?= $barang['kode_barang'] ?>?redirect_page=<?= $redirect ?>" class="btn btn-info btn-sm mb-2 mt-2"><i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                                <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/barang/hapus/<?= $barang['kode_barang'] ?>?redirect_page=<?= $redirect ?>" class="btn btn-danger btn-sm mb-2 mt-2"><i class="fa-solid fa-trash"></i> Hapus </a>
 
+                            </div>
 
-                        </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,9 +117,10 @@
 <?php else : ?>
     <div class="card mb-3">
 
-        <div class="row ">
-            <div class="col-md-8">
-                <div class="card-body">
+
+        <div class="card-body">
+            <div class="row ">
+                <div class="col-md-8">
                     <div class="row">
                         <div class="col">
                             <a href="/barang?page_barang=<?= $redirect ?>" class="btn btn-info btn-small mb-2">Kembali ke tabel barang</a>
@@ -155,8 +152,15 @@
                         </tr>
                     </table>
                 </div>
+                <div class="col-md-4">
+                    <img src="/img/barang/<?= $barang[0]['foto_barang'] ?>" class="img-thumbnail">
+                </div>
             </div>
         </div>
+
+
+
+
     </div>
     <?php if (session()->getFlashdata('pesan')) : ?>
         <div class="alert alert-success mb-3" role="alert">

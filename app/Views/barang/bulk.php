@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
 
-            <form action="/barang/proses-bulk-input" method="post">
+            <form action="/barang/proses-bulk-input" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="jumlah_barang">Jumlah Barang</label>
@@ -106,6 +106,15 @@
                             <label for="keterangan_barang">Keterangan</label>
                             <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang"><?= old('keterangan_barang') ?></textarea>
                             <span class="error invalid-feedback"><?= $validation->getError('keterangan_barang') ?></span>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <label for="fotoBarang">Gambar</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input <?= ($validation->hasError('foto_barang')) ? 'is-invalid' : '' ?>" id="fotoBarang" name="foto_barang">
+                                <label class="custom-file-label" for="inputGroupFile01">Pilih foto</label>
+                            </div>
+                            <span style="font-size:small" class="text-danger"><?= $validation->getError('foto_barang') ?></span>
                         </div>
                     </div>
 
