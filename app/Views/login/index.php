@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body login-card-body">
-            <h4 class="login-box-msg">Halaman Login</h4>
+            <h4 class="login-box-msg">Login di sini</h4>
 
             <form action="login/proseslogin" method="post">
                 <?php if (session()->getFlashdata('pesan')) : ?>
