@@ -20,6 +20,7 @@ class LokasiModel extends Model
         } else {
             $this->select('lokasi.id, unit.nama_unit, lokasi.nama_lokasi ');
             $this->join('unit', 'lokasi.nama_unit = unit.id');
+            $this->orderBy('unit.urutan', 'ASC');
             return $this->findAll();
         }
     }

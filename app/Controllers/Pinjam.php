@@ -168,8 +168,15 @@ class Pinjam extends BaseController
     public function edit($kode_barang)
     {
         session();
-        $data = ['title' => "Edit Pinjam", 'validation' => \Config\Services::validation(), 'pinjam' => $this->pinjamModel->getPinjam($kode_barang)];
-        return view('pinjam/edit', $data);
+        $dataPinjam = $this->pinjamModel->getPinjam($kode_barang);
+        $data = ['title' => "Edit Pinjam", 'validation' => \Config\Services::validation(), 'pinjam' => $dataPinjam];
+
+        if ($dataPinjam['is_returned'] == 1) {
+            session()->setFlashdata('pesan', 'Barang yang sudah dikembalikan tidak dapat diedit');
+            return redirect()->to('/pinjam');
+        } else {
+            return view('pinjam/edit', $data);
+        }
     }
 
 

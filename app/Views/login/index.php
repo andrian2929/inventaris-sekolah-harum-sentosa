@@ -47,9 +47,9 @@
                     <!-- /.col -->
                 </div>
             </form>
-
-
-
+            <div class="text-dark mt-2">
+                <marquee behavior="" direction=""><strong>Yayasan Harum Sentosa &copy;<?= date('Y') ?> Tim Kedaireka USU</strong></marquee>
+            </div>
 
         </div>
         <!-- /.login-card-body -->

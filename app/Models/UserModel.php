@@ -22,8 +22,14 @@ class UserModel extends Model
         }
     }
 
-    public function gerUserByUsername($username)
+    public function getUserByUsername($username)
     {
         return $this->where(['username' => $username])->first();
+    }
+
+    public function editPassword($data, $id)
+    {
+        $password = $data['password'];
+        $this->db->query("UPDATE user SET password = PASSWORD('$password') WHERE id = $id");
     }
 }

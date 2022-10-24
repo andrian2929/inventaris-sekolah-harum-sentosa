@@ -51,7 +51,8 @@ class Login extends BaseController
             if ($user) {
                 $data = [
                     'username' => $user['username'],
-                    'nama' => $user['nama']
+                    'nama' => $user['nama'],
+                    'id' => $user['id']
                 ];
                 session()->set($data);
                 return redirect()->to('/');

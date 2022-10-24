@@ -28,6 +28,11 @@
                     </tr>
 
                     <tr>
+                        <td style="width:150px"><b>Nama Peminjam</b></td>
+                        <td scope="col"><?= $pinjam['nama_peminjam'] ?></td>
+                    </tr>
+
+                    <tr>
                         <td style="width:150px"><b>Detail Barang</b></td>
                         <td>
                             <?php
@@ -73,7 +78,7 @@
                     </tr>
 
                     <tr>
-                        <td style="width:150px"><b>Barang Kembali</b></td>
+                        <td style="width:150px"><b>Status</b></td>
                         <td> <?php
                                 if ($pinjam['is_returned'] == '0') {
                                 ?>

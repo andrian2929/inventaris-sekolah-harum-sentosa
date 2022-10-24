@@ -76,10 +76,10 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 pb-3 mb-3 text-center">
 
-                    <div class="info">
-                        <a href="#" class="d-block">
+                    <div class="info ">
+                        <a href="/user" class="d-block text-center">
                             <?= (session()->get('nama')) ? session()->get('nama') : '' ?>
                         </a>
                     </div>
@@ -177,12 +177,8 @@
 
 
             <section class="content">
-
                 <div class="container-fluid">
-
                     <?= $this->renderSection('content') ?>
-
-
                 </div>
             </section>
 
