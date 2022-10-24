@@ -15,7 +15,7 @@ class UnitModel extends Model
     public function getUnit($id = false)
     {
         if ($id == false) {
-            return $this->findAll();
+            return $this->orderBy('urutan', 'ASC')->findAll();
         } else {
             return $this->where('id', $id)->first();
         }

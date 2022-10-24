@@ -4,8 +4,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <?= $validation->listErrors(); ?>
-            <form action="/barang/prosestambah" method="post">
+            <form action="/barang/prosestambah" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>
@@ -32,7 +31,11 @@
                             <select name="kategori_barang" id="" class="form-control select2bs4">
                                 <?php $kategori = ['Kendaraan', 'Elektronik', 'Barang Tidak Bergerak', 'Barang Bergerak'] ?>
                                 <?php foreach ($kategori as $ktg) : ?>
-                                    <option value="<?= $ktg ?>"><?= $ktg ?></option>
+                                    <option <?php if (old('kategori_barang') !== null) {
+                                                if (old('kategori_barang') == $ktg) {
+                                                    echo 'selected';
+                                                }
+                                            } ?> value="<?= $ktg ?>"><?= $ktg ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('merek_barang') ?></span>
@@ -40,9 +43,14 @@
                         <div class="col-6">
                             <label>Kondisi</label>
                             <select name="kondisi_barang" class="form-control <?= ($validation->hasError('kondisi_barang')) ? 'is-invalid' : '' ?>" style="width: 100%;">
-                                <option selected="selected">Baik</option>
-                                <option>Setengah Rusak</option>
-                                <option>Rusak</option>
+                                <?php $kondisis = ['Baik', 'Setengah Rusak', 'Rusak'] ?>
+                                <?php foreach ($kondisis as $kondisi) : ?>
+                                    <option <?php if (old('kondisi_barang') !== null) {
+                                                if (old('kondisi_barang') == $kondisi) {
+                                                    echo 'selected';
+                                                }
+                                            } ?> value="<?= $kondisi ?>"><?= $kondisi ?></option>
+                                <?php endforeach; ?>
 
                             </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('kondisi_barang') ?></span>
@@ -77,7 +85,11 @@
                             <label for="unit_barang">Unit</label>
                             <select name="unit_barang" id="" class="form-control select2bs4">
                                 <?php foreach ($unit as $unt) : ?>
-                                    <option value="<?= $unt['nama_unit'] ?>"><?= $unt['nama_unit'] ?></option>
+                                    <option <?php if (old('unit_barang') !== null) {
+                                                if (old('unit_barang') == $unt['nama_unit']) {
+                                                    echo 'selected';
+                                                }
+                                            } ?> value="<?= $unt['nama_unit'] ?>"><?= $unt['nama_unit'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('lokasi_barang') ?></span>
@@ -86,7 +98,11 @@
                             <label for="lokasi_barang">Lokasi</label>
                             <select name="lokasi_barang" id="" class="form-control select2bs4">
                                 <?php foreach ($lokasi as $lok) : ?>
-                                    <option value="<?= $lok['nama_lokasi'] ?>"><?= $lok['nama_lokasi'] ?></option>
+                                    <option <?php if (old('lokasi_barang') !== null) {
+                                                if (old('lokasi_barang') == $lok['nama_lokasi']) {
+                                                    echo 'selected';
+                                                }
+                                            } ?> value="<?= $lok['nama_lokasi'] ?>"><?= $lok['nama_lokasi'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <span class="error invalid-feedback"> <?= $validation->getError('lokasi_barang') ?></span>
@@ -98,6 +114,15 @@
                             <label for="keterangan_barang">Keterangan</label>
                             <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang"><?= old('keterangan_barang') ?></textarea>
                             <span class="error invalid-feedback"><?= $validation->getError('keterangan_barang') ?></span>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6">
+                            <label for="fotoBarang">Gambar</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input <?= ($validation->hasError('foto_barang')) ? 'is-invalid' : '' ?>" id="fotoBarang" name="foto_barang">
+                                <label class="custom-file-label" for="inputGroupFile01">Pilih foto</label>
+                            </div>
+                            <span style="font-size:small" class="text-danger"><?= $validation->getError('foto_barang') ?></span>
                         </div>
                     </div>
 

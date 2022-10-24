@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body login-card-body">
-            <h4 class="login-box-msg">Halaman Login</h4>
+            <h4 class="login-box-msg">Login di sini</h4>
 
             <form action="login/proseslogin" method="post">
                 <?php if (session()->getFlashdata('pesan')) : ?>
@@ -47,9 +47,9 @@
                     <!-- /.col -->
                 </div>
             </form>
-
-
-
+            <div class="text-dark mt-2">
+                <marquee behavior="" direction=""><strong>Yayasan Harum Sentosa &copy;<?= date('Y') ?> Tim Kedaireka USU</strong></marquee>
+            </div>
 
         </div>
         <!-- /.login-card-body -->

@@ -33,7 +33,7 @@
                         <thead>
                             <tr class="text-center">
                                 <th style="width: 15px;">No</th>
-                                <th>Nama Lokasi</th>
+                                <th>Nama Ruangan</th>
                                 <th>Nama Unit</th>
                                 <th>Aksi</th>
                             </tr>

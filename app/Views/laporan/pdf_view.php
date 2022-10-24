@@ -20,7 +20,7 @@
                 <th>Merek</th>
                 <th>Asal Dana</th>
                 <th>Unit</th>
-                <th>Lokasi</th>
+                <th>Ruangan</th>
                 <th>Harga</th>
                 <th>Tanggal Pembukuan</th>
             </tr>
@@ -30,22 +30,22 @@
             <?php if ($barangs) : ?>
                 <?php $i = 1; ?>
                 <?php foreach ($barangs as $barang) : ?>
-                    <tr>
-                        <td><?= $i++; ?></td>
-                        <td><?= $barang['kode_barang']; ?></td>
-                        <td><?= $barang['nama_barang']; ?></td>
-                        <td><?= $barang['merek_barang']; ?></td>
-                        <td><?= $barang['asal_barang']; ?></td>
-                        <td><?= $barang['unit_barang']; ?></td>
-                        <td><?= $barang['lokasi_barang']; ?></td>
-                        <td>
+                    <tr style="height:200px">
+                        <td style="height:15px;"><?= $i++; ?></td>
+                        <td style="height:15px;"><?= $barang['kode_barang']; ?></td>
+                        <td style="height:15px;"><?= $barang['nama_barang']; ?></td>
+                        <td style="height:15px;"><?= $barang['merek_barang']; ?></td>
+                        <td style="height:15px;"><?= $barang['asal_barang']; ?></td>
+                        <td style="height:15px;"><?= $barang['unit_barang']; ?></td>
+                        <td style="height:15px;"><?= $barang['lokasi_barang']; ?></td>
+                        <td style="height:15px;">
                             <?php
                             $fmt = numfmt_create('id_ID', NumberFormatter::CURRENCY);
                             echo numfmt_format_currency($fmt, $barang['harga_barang'], "IDR")
 
                             ?>
                         </td>
-                        <td><?= $barang['tanggal_pembukuan']; ?></td>
+                        <td style="height:15px;"><?= $barang['tanggal_pembukuan']; ?></td>
                     </tr>
                 <?php endforeach; ?>
 

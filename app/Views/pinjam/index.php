@@ -36,7 +36,7 @@
                                 <th>Nama Peminjam</th>
                                 <th>Nama Barang</th>
                                 <th>Tanggal Pinjam</th>
-                                <th>Dikembalikan</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -64,7 +64,11 @@
                                     </td>
                                     <td style="width: 150px ;" class="text-center">
                                         <a href="/pinjam/detail/<?= $pinjam['kode_pinjam'] ?>" class="btn btn-info btn-sm mb-2"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="/pinjam/edit/<?= $pinjam['kode_pinjam'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                        <?php if (!$pinjam['is_returned']) : ?>
+                                            <a href="/pinjam/edit/<?= $pinjam['kode_pinjam'] ?>" class="btn btn-primary btn-sm mb-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <?php endif; ?>
+
                                         <a onclick="return confirm('Apakah anda yakin ingin menghapus item ini?');" href="/pinjam/hapus/<?= $pinjam['kode_pinjam'] ?>" class="btn btn-danger btn-sm mb-2"><i class="fa-solid fa-trash"></i></a>
                                     </td>
                                 </tr>

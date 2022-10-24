@@ -10,9 +10,7 @@
                     <tr>
                         <td style="width:150px"><b>Kode Pinjam</b></td>
                         <td scope="col"><?= $pinjam['kode_pinjam'] ?></td>
-
                     </tr>
-
 
                     <tr>
                         <td style="width:150px"><b>Nama Barang</b></td>
@@ -27,6 +25,11 @@
                             ?>
                         </td>
 
+                    </tr>
+
+                    <tr>
+                        <td style="width:150px"><b>Nama Peminjam</b></td>
+                        <td scope="col"><?= $pinjam['nama_peminjam'] ?></td>
                     </tr>
 
                     <tr>
@@ -56,7 +59,11 @@
 
                     <tr>
                         <td style="width:150px"><b>Tanggal Kembali</b></td>
-                        <td><?= $pinjam['tanggal_kembali'] ?></td>
+                        <td>
+                            <?php
+                            echo $pinjam['tanggal_kembali'] . '<br><em>' . $pinjam['humanize_time'] . '<em>';
+                            ?>
+                        </td>
 
                     </tr>
                     <tr>
@@ -71,7 +78,7 @@
                     </tr>
 
                     <tr>
-                        <td style="width:150px"><b>Barang Kembali</b></td>
+                        <td style="width:150px"><b>Status</b></td>
                         <td> <?php
                                 if ($pinjam['is_returned'] == '0') {
                                 ?>

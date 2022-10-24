@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\BarangModel;
 use App\Models\PinjamModel;
+use CodeIgniter\I18n\Time;
 
 class Pinjam extends BaseController
 {
@@ -32,7 +33,7 @@ class Pinjam extends BaseController
 
 
         $data = [
-            'title' => "Tabel Data Barang",
+            'title' => "Tabel Data Pinjam Barang",
             'pinjams' =>  $pinjam,
             'pager' => $this->pinjamModel->pager,
             'keyword' => $keyword
@@ -61,7 +62,7 @@ class Pinjam extends BaseController
         $this->pinjamModel->save([
             'id' => $id,
             'is_returned' => 1,
-            'tanggal_kembali' => date('Y-m-d')
+            'tanggal_kembali' => new Time('now', 'Asia/Jakarta', 'id_ID')
         ]);
         session()->setFlashdata('pesan', 'Berhasil dikembalikan');
         return redirect()->to('/pinjam');
@@ -69,7 +70,14 @@ class Pinjam extends BaseController
 
     public function detail($kode_barang)
     {
-        $data = ['title' => 'Detail Data Pinjam Barang', 'pinjam' => $this->pinjamModel->getPinjam($kode_barang)];
+        $pinjam = $this->pinjamModel->getPinjam($kode_barang);
+
+        $time = Time::parse($pinjam['tanggal_kembali'], 'Asia/Jakarta', 'id_ID');
+
+        $pinjam['humanize_time'] = $time->humanize();
+
+
+        $data = ['title' => 'Detail Data Pinjam Barang', 'pinjam' => $pinjam];
         return view('pinjam/detail', $data);
     }
 
@@ -160,8 +168,15 @@ class Pinjam extends BaseController
     public function edit($kode_barang)
     {
         session();
-        $data = ['title' => "Edit Pinjam", 'validation' => \Config\Services::validation(), 'pinjam' => $this->pinjamModel->getPinjam($kode_barang)];
-        return view('pinjam/edit', $data);
+        $dataPinjam = $this->pinjamModel->getPinjam($kode_barang);
+        $data = ['title' => "Edit Pinjam", 'validation' => \Config\Services::validation(), 'pinjam' => $dataPinjam];
+
+        if ($dataPinjam['is_returned'] == 1) {
+            session()->setFlashdata('pesan', 'Barang yang sudah dikembalikan tidak dapat diedit');
+            return redirect()->to('/pinjam');
+        } else {
+            return view('pinjam/edit', $data);
+        }
     }
 
 

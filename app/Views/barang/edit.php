@@ -14,19 +14,19 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama_barang">Nama</label>
-                        <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : '' ?>" id="nama_barang" placeholder="Masukkan nama barang" autofocus name="nama_barang" value="<?= (old('nama_barang')) ? old('nama_barang') : $barang['nama_barang']  ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('nama_barang')) ? 'is-invalid' : '' ?>" id="nama_barang" placeholder="Masukkan nama barang" autofocus name="nama_barang" value="<?= (old('nama_barang') === null) ? $barang['nama_barang'] : old('nama_barang') ?>">
                         <span class="error invalid-feedback"> <?= $validation->getError('nama_barang') ?></span>
                     </div>
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="merek_barang">Merek</label>
-                            <input type="text" class="form-control <?= ($validation->hasError('merek_barang')) ? 'is-invalid' : '' ?>" id="merek_barang" placeholder="Masukkan nama barang" name="merek_barang" value="<?= (old('merek_barang')) ? old('merek_barang') : $barang['merek_barang']  ?>">
+                            <input type="text" class="form-control <?= ($validation->hasError('merek_barang')) ? 'is-invalid' : '' ?>" id="merek_barang" placeholder="Masukkan nama barang" name="merek_barang" value="<?= (old('merek_barang') === null) ? $barang['merek_barang'] : old('merek_barang') ?>">
                             <span class="error invalid-feedback"> <?= $validation->getError('merek_barang') ?></span>
                         </div>
 
                         <div class="col-6">
                             <label for="harga_barang">Harga</label>
-                            <input type="number" class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : '' ?>" id="harga_barang" placeholder="Masukkan harga barang" name="harga_barang" value="<?= (old('harga_barang')) ? old('harga_barang') : $barang['harga_barang']  ?>">
+                            <input type="number" class="form-control <?= ($validation->hasError('harga_barang')) ? 'is-invalid' : '' ?>" id="harga_barang" placeholder="Masukkan harga barang" name="harga_barang" value="<?= (old('harga_barang') === null) ? $barang['harga_barang'] : old('harga_barang') ?>">
                             <span class="error invalid-feedback"> <?= $validation->getError('harga_barang') ?></span>
                         </div>
                     </div>
@@ -75,14 +75,14 @@
                     <div class="form-row mb-2">
                         <div class="col-6">
                             <label for="asal_barang">Asal</label>
-                            <input type="text" class="form-control <?= ($validation->hasError('asal_barang')) ? 'is-invalid' : '' ?>" id="asal_barang" placeholder="Masukkan asal barang" name="asal_barang" value="<?= (old('asal_barang')) ? old('asal_barang') : $barang['asal_barang']  ?>">
+                            <input type="text" class="form-control <?= ($validation->hasError('asal_barang')) ? 'is-invalid' : '' ?>" id="asal_barang" placeholder="Masukkan asal barang" name="asal_barang" value="<?= (old('asal_barang') === null) ? $barang['asal_barang'] : old('asal_barang') ?>">
                             <span class="error invalid-feedback"> <?= $validation->getError('asal_barang') ?></span>
                         </div>
 
                         <div class="col-6">
                             <label>Tanggal Pembukuan</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('tanggal_pembukuan')) ? 'is-invalid' : '' ?>" data-target="#reservationdate" name="tanggal_pembukuan" value="<?= (old('tanggal_pembukuan')) ? old('tanggal_pembukuan') : $barang['tanggal_pembukuan']  ?>" placeholder="Masukkan tanggal pembukuan">
+                                <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('tanggal_pembukuan')) ? 'is-invalid' : '' ?>" data-target="#reservationdate" name="tanggal_pembukuan" value="<?= (old('tanggal_pembukuan') === null) ? $barang['tanggal_pembukuan'] : old('tanggal_pembukuan') ?>" placeholder="Masukkan tanggal pembukuan">
                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -139,7 +139,7 @@
                     <div class="form-row mb-2">
                         <div class="col-sm-12 col-md-6">
                             <label for="keterangan_barang">Keterangan</label>
-                            <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang"><?= (old('keterangan_barang')) ? old('keterangan_barang') : $barang['keterangan_barang']  ?></textarea>
+                            <textarea class="form-control <?= ($validation->hasError('keterangan_barang')) ? 'is-invalid' : '' ?>" id="keterangan_barang" rows="3" name="keterangan_barang"><?= (old('keterangan_barang') === null) ? $barang['keterangan_barang'] : old('keterangan_barang') ?></textarea>
                             <span class="error invalid-feedback"><?= $validation->getError('keterangan_barang') ?></span>
                         </div>
                     </div>

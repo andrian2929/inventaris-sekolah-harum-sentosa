@@ -74,7 +74,8 @@ class Laporan extends Controller
             $sheet->setCellValue('F1', 'Unit');
             $sheet->setCellValue('G1', 'Lokasi');
             $sheet->setCellValue('H1', 'Harga');
-            $sheet->setCellValue('I1', 'Tanggal Pembukuan');
+            $sheet->setCellValue('I1', 'Kondisi');
+            $sheet->setCellValue('J1', 'Tanggal Pembukuan');
             $rows = 2;
             $no = 1;
             foreach ($data['barangs'] as $barang) {
@@ -86,7 +87,8 @@ class Laporan extends Controller
                 $sheet->setCellValue('F' . $rows, $barang['unit_barang']);
                 $sheet->setCellValue('G' . $rows, $barang['lokasi_barang']);
                 $sheet->setCellValue('H' . $rows, $barang['harga_barang']);
-                $sheet->setCellValue('I' . $rows, $barang['tanggal_pembukuan']);
+                $sheet->setCellValue('I' . $rows, $barang['kondisi_barang']);
+                $sheet->setCellValue('J' . $rows, $barang['tanggal_pembukuan']);
                 $rows++;
             }
 

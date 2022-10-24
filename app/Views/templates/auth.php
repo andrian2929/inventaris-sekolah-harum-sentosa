@@ -29,6 +29,12 @@
 
     <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <style>
+        body {
+            background-image: url('/img/background-yayasan.png');
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page">
