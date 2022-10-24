@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <?php if (!isset($title)) : ?>
+        <?php $title = 'Redirecting' ?>
+    <?php endif; ?>
+
+    <title><?= 'Inventaris | ' . $title ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -94,7 +98,7 @@
 
                         <li class="nav-header">BARANG</li>
                         <li class="nav-item">
-                            <a href="/barang" class="nav-link">
+                            <a href="/barang" class="nav-link  <?= ($title == 'Data Barang' || $title == 'Tambah Barang' || $title == 'Bulk Tambah Barang' || $title == 'Edit Barang') ? 'active' : '' ?>">
                                 <i class="nav-icon fa-solid fa-box"></i>
 
                                 <p>
@@ -103,18 +107,11 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/barang/tambah" class="nav-link">
-                                <i class="nav-icon fa-solid fa-square-plus"></i>
-                                <p>
-                                    Tambah Barang
-                                </p>
-                            </a>
-                        </li>
+
 
                         <li class="nav-header">PEMINJAMAN</li>
                         <li class="nav-item">
-                            <a href="/pinjam" class="nav-link">
+                            <a href="/pinjam" class="nav-link <?= ($title == 'Data Peminjaman Barang' || $title == 'Detail Data Pinjam Barang' || $title == 'Tambah Peminjaman' || $title == 'Edit Pinjam') ? 'active' : '' ?>">
                                 <i class="nav-icon fa-solid fa-box"></i>
                                 <p>
                                     Peminjaman Barang
@@ -125,7 +122,7 @@
 
                         <li class="nav-header">Laporan</li>
                         <li class="nav-item">
-                            <a href="/laporan" class="nav-link">
+                            <a href="/laporan" class="nav-link <?= ($title == 'Laporan') ? 'active' : '' ?>">
                                 <i class="nav-icon fa-solid fa-print"></i>
                                 <p>
                                     Laporan
@@ -139,14 +136,14 @@
                         <li class="nav-header">PENGATURAN</li>
 
                         <li class="nav-item">
-                            <a href="/unit" class="nav-link">
+                            <a href="/unit" class="nav-link  <?= ($title == 'Data Unit' || $title == 'Tambah Unit' || $title == 'Edit Unit') ? 'active' : '' ?>">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Unit</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/lokasi" class="nav-link">
+                            <a href="/lokasi" class="nav-link <?= ($title == 'Data Lokasi/Ruangan' || $title == 'Tambah Lokasi/Ruangan' || $title == 'Edit Data Lokasi/Ruangan') ? 'active' : '' ?> ">
                                 <i class="fas fa-circle nav-icon"></i>
                                 <p>Lokasi</p>
                             </a>

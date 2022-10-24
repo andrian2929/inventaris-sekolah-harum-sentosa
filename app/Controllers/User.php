@@ -18,7 +18,7 @@ class User extends BaseController
     {
         session();
 
-        $data = ['title' => 'Halaman User', 'validation' => \Config\Services::validation(), 'user' => $this->userModel->getUserByUsername(session()->get('username'))];
+        $data = ['title' => 'Profil Pengguna', 'validation' => \Config\Services::validation(), 'user' => $this->userModel->getUserByUsername(session()->get('username'))];
 
 
         return view('user/index', $data);
