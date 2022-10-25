@@ -32,7 +32,6 @@ class Barang extends BaseController
 
         $redirect = $this->request->getVar('page_barang') ? $this->request->getVar('page_barang') : 1;
 
-
         $keyword = $this->request->getVar(('keyword'));
         if ($keyword) {
             $barang = $this->barangModel->search($keyword);
@@ -46,7 +45,7 @@ class Barang extends BaseController
 
 
         $data = [
-            'title' => "Tabel Data Barang",
+            'title' => "Data Barang",
             'barang' => $barang,
             'pager' => $this->barangModel->pager,
             'keyword' => $keyword,
@@ -78,7 +77,7 @@ class Barang extends BaseController
     {
         $redirect =  $this->uri->getQuery();
 
-        $data = ['title' => "Tabel Data Barang", 'barang' => $this->barangModel->getBarang()];
+        $data = ['title' => "Data Barang", 'barang' => $this->barangModel->getBarang()];
         return view('barang/index', $data);
     }
 
@@ -188,15 +187,12 @@ class Barang extends BaseController
     }
 
 
+
     private function checkId()
     {
         $init_id = 1;
 
         date_default_timezone_set('Asia/Jakarta');
-
-
-
-
 
         do {
             $set_kode = "BRG" . date('dmY') . $init_id;
@@ -377,7 +373,7 @@ class Barang extends BaseController
     {
         session();
 
-        $data = ['title' => "Bulk Input Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi()];
+        $data = ['title' => "Bulk Tambah Barang", 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi()];
         return view('barang/bulk', $data);
     }
 

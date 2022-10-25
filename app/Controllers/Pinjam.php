@@ -33,7 +33,7 @@ class Pinjam extends BaseController
 
 
         $data = [
-            'title' => "Tabel Data Pinjam Barang",
+            'title' => "Data Peminjaman Barang",
             'pinjams' =>  $pinjam,
             'pager' => $this->pinjamModel->pager,
             'keyword' => $keyword
@@ -53,7 +53,7 @@ class Pinjam extends BaseController
         }
 
 
-        $data = ['title' => "Tambah Data Pinjam", 'validation' => \Config\Services::validation(), 'barangs' => $barang];
+        $data = ['title' => "Tambah Peminjaman", 'validation' => \Config\Services::validation(), 'barangs' => $barang];
         return view('pinjam/tambah', $data);
     }
 
@@ -84,8 +84,7 @@ class Pinjam extends BaseController
 
     public function tampil()
     {
-
-        $data = ['title' => "Tabel Data Barang", 'barang' => $this->barangModel->getBarang()];
+        $data = ['title' => "Data Barang", 'barang' => $this->barangModel->getBarang()];
         return view('barang/index', $data);
     }
 

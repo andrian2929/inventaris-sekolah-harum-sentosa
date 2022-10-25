@@ -81,7 +81,7 @@ class Lokasi extends BaseController
         session();
 
 
-        $data = ['title' => 'Edit Data Unit', 'validation' => \Config\Services::validation(), 'units' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi($id), 'unitModel' => $this->unitModel];
+        $data = ['title' => 'Edit Data Lokasi/Ruangan', 'validation' => \Config\Services::validation(), 'units' => $this->unitModel->getUnit(), 'lokasi' => $this->lokasiModel->getLokasi($id), 'unitModel' => $this->unitModel];
         return view('lokasi/edit', $data);
     }
 

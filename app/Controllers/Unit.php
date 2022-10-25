@@ -76,7 +76,7 @@ class Unit extends BaseController
         session();
 
 
-        $data = ['title' => 'Edit Data Unit', 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit($id)];
+        $data = ['title' => 'Edit Unit', 'validation' => \Config\Services::validation(), 'unit' => $this->unitModel->getUnit($id)];
         return view('unit/edit', $data);
     }
 

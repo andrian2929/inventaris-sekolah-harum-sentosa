@@ -35,7 +35,7 @@
                                 <th style="width: 15px;">No</th>
                                 <th style="width:20px ;">Kode </th>
                                 <th>Nama</th>
-                                <th>Lokasi</th>
+                                <th>Lokasi/Ruangan</th>
                                 <th>Unit</th>
                                 <th>Aksi</th>
                             </tr>
